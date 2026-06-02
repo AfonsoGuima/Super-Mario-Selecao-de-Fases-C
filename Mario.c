@@ -469,7 +469,12 @@ int main() {
     printf("Peso final : %d\n", player.pesoAtual);
     printf("Caminho    : ");
     for (int i = 0; i < player.tamanhoHistorico; i++){
-        printf("[%s] ", mapa.fases[player.historico[i]].nome);
+        int indiceReal = buscarIndicePorId(&mapa, player.historico[i]);
+        if (indiceReal != -1) {
+            printf("[%s] ", mapa.fases[indiceReal].nome);
+        } else {
+            printf("[Fase Desconhecida] ");
+        }
     }
     printf("\n");
 }
